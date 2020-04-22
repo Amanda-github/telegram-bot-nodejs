@@ -5,10 +5,10 @@ const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
 
 //telegram token obtained from FatherBot
-const telegramToken = "1169469449:AAHG_kN7rWPHc0qCxZSWhJJMJo8cK3TsZgA";
+const telegramToken = "<your token>";
 
 //weather token obtained from OpenWeather.org
-const weatherToken = "fe9d16537bf73d11bed1a2d34e92b5b9";
+const weatherToken = "<your token>";
 
 const telegram = new telegramBot(telegramToken, { polling: true });
 
