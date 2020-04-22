@@ -1,0 +1,31 @@
+
+//For loop for /view_notes
+//showing messages in different lines instead of an array
+// for (let i = 0; i < savedMessage.length; i++) {
+//   return telegram.sendMessage(chatId, `${i + 1}. Saved Message: ${savedMessage[i]}`);
+// }
+
+//For of loop for /view_notes
+//showing messages in different lines instead of an array
+// for (const [i, v] of savedMessage.entries()) {
+//   telegram.sendMessage(chatId, `Saved Message: \n ${i + 1}. ${v}`);
+// }
+
+const savedMessage = []
+telegram.onText(/\/save_note (.+)/, (message,match)=>{
+    const chatId = message.chat.id;
+    const response = match[1];
+    if (response === null) {
+        telegram.sendMessage(chatId, "Please retype your message")
+    }
+    else {
+        savedMessage.push(response);
+        telegram.sendMessage(chatId, savedMessage.toString())
+    }
+});
+
+telegram.onText(/\/view_notes/, (message)=>{
+    const chatId = message.chat.id;
+    //do not stringify savedMessage as they have been stringify before pushing into the array
+    return telegram.sendMessage(chatId, savedMessage)
+})
