@@ -44,6 +44,9 @@ const weather = (chatId, city) => {
       const { name, weather, main, wind } = response.data;
       telegram.sendMessage(
         chatId,
+        //must put weather is an array of object
+        //to reach values using weather.main, need to specify the index of weather
+        //use google inspect to console.log api response (https://samples.openweathermap.org/data/2.5/forecast?q=M%C3%BCnchen,DE&appid=439d4b804bc8187953eb36d2a8c26a02)
         weatherTemplate(name, weather[0], main, wind),
         {
           parse_mode: "HTML",
